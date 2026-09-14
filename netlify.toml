@@ -18,13 +18,6 @@
   status = 301
   force = true
 
-# Redirect www → apex
-[[redirects]]
-  from = "https://www.example.com/*"
-  to = "https://example.com/:splat"
-  status = 301
-  force = true
-
 # Headers de seguranca
 [[headers]]
   for = "/*"

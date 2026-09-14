@@ -356,6 +356,31 @@ function initFaqIndex() {
 }
 
 /* Pagina /aplicar/: uma pergunta por tela, com triagem */
+/* Envio para o Google Sheets (Apps Script Web App).
+   A URL fica em data-endpoint no <form>. O Apps Script recebe JSON em e.postData.contents.
+   Sem Content-Type explícito o navegador manda text/plain, que o Apps Script aceita sem preflight. */
+async function enviarParaSheets(form) {
+  const endpoint = (form.dataset.endpoint || '').trim();
+  if (!endpoint) throw new Error('Endpoint do Google Sheets não configurado');
+
+  const bot = form.querySelector('input[name="bot-field"]');
+  if (bot && bot.value) return; // honeypot preenchido: finge sucesso e não grava
+
+  const dados = {};
+  new FormData(form).forEach((v, k) => { if (k !== 'bot-field') dados[k] = v; });
+  const params = new URLSearchParams(window.location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'].forEach((k) => {
+    dados[k] = params.get(k) || '';
+  });
+  dados.pagina = window.location.pathname;
+  dados.enviado_em = new Date().toISOString();
+
+  const res = await fetch(endpoint, { method: 'POST', body: JSON.stringify(dados) });
+  if (!res.ok) throw new Error('Falha ao gravar na planilha');
+  const json = await res.json().catch(() => ({}));
+  if (json && json.ok === false) throw new Error(json.error || 'Falha ao gravar na planilha');
+}
+
 function initAplicacao() {
   const form = document.querySelector('[data-aplicacao]');
   if (!form) return;
@@ -492,14 +517,9 @@ function initAplicacao() {
     const original = btn.textContent;
     btn.textContent = 'Enviando...';
     try {
-      const res = await fetch('/aplicar/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      });
-      if (!res.ok) throw new Error('Erro');
+      await enviarParaSheets(form);
       if (typeof fbq === 'function') fbq('track', 'Lead');
-      if (typeof dataLayer !== 'undefined') dataLayer.push({ event: 'generate_lead', form_name: 'aplicacao', method: 'netlify_form' });
+      if (typeof dataLayer !== 'undefined') dataLayer.push({ event: 'generate_lead', form_name: 'aplicacao', method: 'google_sheets' });
       const redirect = new URL('/obrigado/', window.location.origin);
       new URLSearchParams(window.location.search).forEach((v, k) => redirect.searchParams.set(k, v));
       if (nome) redirect.searchParams.set('nome', nome);

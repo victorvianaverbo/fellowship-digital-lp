@@ -28,7 +28,7 @@
 
   <header class="topbar topbar--form">
     <div class="topbar__inner">
-      <a href="/pagina-aplicacao/" class="brand" aria-label="Fellowship Digital">
+      <a href="/" class="brand" aria-label="Fellowship Digital">
         <svg class="brand__mark" viewBox="0 0 72 72" aria-hidden="true">
           <circle cx="36" cy="36" r="33" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
           <rect x="27" y="17" width="5" height="38" fill="currentColor"></rect>
@@ -44,8 +44,8 @@
   </header>
 
   <main class="aplicar">
-    <form name="aplicacao" method="POST" action="/obrigado/" data-netlify="true" netlify-honeypot="bot-field" data-aplicacao class="aplicar__form" novalidate>
-      <input type="hidden" name="form-name" value="aplicacao">
+    <!-- Envio para o Google Sheets: cole a URL do Web App do Apps Script em data-endpoint (ver /aplicar/google-sheets/README.md) -->
+    <form name="aplicacao" method="POST" data-aplicacao data-endpoint="" class="aplicar__form" novalidate>
       <input type="hidden" name="triagem" value="">
       <p hidden><label>Não preencha: <input name="bot-field"></label></p>
 
@@ -252,7 +252,7 @@
           <h2 class="tela__question">O Fellowship Digital é um programa para médicos.</h2>
           <p class="tela__support">Agradecemos o interesse. O programa foi desenhado para médicos que ensinam ou pretendem ensinar, e não conseguiríamos atender bem fora desse perfil. Se quiser acompanhar o trabalho do board, o Instagram é <a href="https://instagram.com/fellowshipdigital" rel="noopener">@fellowshipdigital</a>.</p>
           <div class="tela__nav">
-            <a href="/pagina-aplicacao/" class="tela__back">Voltar ao início</a>
+            <a href="/" class="tela__back">Voltar ao início</a>
           </div>
         </div>
       </section>
@@ -263,7 +263,7 @@
           <h2 class="tela__question">Tudo bem. O board continua por aqui.</h2>
           <p class="tela__support">A cohort 01 não será a última. As próximas aplicações abrem pelo Instagram <a href="https://instagram.com/fellowshipdigital" rel="noopener">@fellowshipdigital</a>, e quando fizer sentido para você, é só aplicar de novo.</p>
           <div class="tela__nav">
-            <a href="/pagina-aplicacao/" class="tela__back">Voltar ao início</a>
+            <a href="/" class="tela__back">Voltar ao início</a>
           </div>
         </div>
       </section>

@@ -11,10 +11,17 @@
 [images]
   remote_images = ["https://.*"]
 
-# Raiz -> pagina de aplicacao
+# Link antigo -> raiz
 [[redirects]]
-  from = "/"
-  to = "/pagina-aplicacao/"
+  from = "/pagina-aplicacao/"
+  to = "/"
+  status = 301
+  force = true
+
+# www -> apex
+[[redirects]]
+  from = "https://www.fellowshipdigital.com.br/*"
+  to = "https://fellowshipdigital.com.br/:splat"
   status = 301
   force = true
 

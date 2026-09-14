@@ -13,9 +13,7 @@
   if (!canvases.length) return;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var PRATA = '184, 192, 204';
   var ELETRICO = '59, 111, 214';
-  var BRANCO = '245, 247, 250';
   var ASPECT = 0.42;
   var TILT = 18 * Math.PI / 180;
 
@@ -30,6 +28,12 @@
     var cx = 0, cy = 0, base = 1;
     var centered = canvas.getAttribute('data-orbits') === 'center';
     var strength = parseFloat(canvas.getAttribute('data-strength') || '1');
+    var light = canvas.getAttribute('data-theme') === 'light';
+    // sobre fundo claro as linhas ficam em azul-aco e os nucleos em marinho
+    var PRATA = light ? '44, 74, 110' : '184, 192, 204';
+    var BRANCO = light ? '11, 31, 58' : '245, 247, 250';
+    var lineBoost = light ? 1.6 : 1;
+    var speed = 1;
 
     var rings = [
       { r: 120, period: 38, phase: 0.6 },
@@ -42,18 +46,20 @@
 
     function resize() {
       var rect = section.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
       width = Math.max(1, Math.round(rect.width));
       height = Math.max(1, Math.round(rect.height));
+      var mobile = width < 960;
+      dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2);
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
       canvas.style.width = width + 'px';
       canvas.style.height = height + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var mobile = width < 960;
       cx = (mobile || centered) ? width * 0.5 : width * 0.72;
       cy = (mobile || centered) ? height * 0.5 : height * 0.55;
-      base = Math.min(height / 560, width / 1100) * (mobile ? 0.7 : 1);
+      // no celular as orbitas ocupam a largura da tela e giram mais depressa
+      base = mobile ? width / 720 : Math.min(height / 560, width / 1100);
+      speed = mobile ? 2 : 1.25;
       draw(0);
     }
 
@@ -72,7 +78,7 @@
       ctx.rotate(TILT);
       ctx.beginPath();
       ctx.ellipse(0, 0, r * base, r * base * ASPECT, 0, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(' + PRATA + ', ' + alpha + ')';
+      ctx.strokeStyle = 'rgba(' + PRATA + ', ' + Math.min(1, alpha * lineBoost) + ')';
       ctx.lineWidth = widthPx;
       ctx.stroke();
       ctx.restore();
@@ -112,7 +118,7 @@
         ctx.lineTo(p2.x, p2.y);
         ctx.strokeStyle = gest
           ? 'rgba(' + ELETRICO + ', ' + (0.55 + 0.35 * p1.depth) * s + ')'
-          : 'rgba(' + PRATA + ', ' + (0.18 + 0.22 * p1.depth) * s + ')';
+          : 'rgba(' + PRATA + ', ' + Math.min(1, (0.18 + 0.22 * p1.depth) * s * lineBoost) + ')';
         ctx.lineWidth = gest ? 1.5 : 1;
         ctx.stroke();
       }
@@ -185,7 +191,7 @@
       if (!running) return;
       var dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
       last = now;
-      t += dt;
+      t += dt * speed;
       draw(dt);
       raf = requestAnimationFrame(loop);
     }

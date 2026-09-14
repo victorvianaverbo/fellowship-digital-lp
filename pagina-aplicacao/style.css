@@ -309,11 +309,34 @@ ul, ol {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: var(--marinho);
+  background: var(--branco);
   background-image:
-    radial-gradient(60% 70% at 72% 55%, rgba(44, 74, 110, 0.65) 0%, rgba(11, 31, 58, 0) 70%),
-    linear-gradient(180deg, #0B1F3A 0%, #0C2242 60%, #0B1F3A 100%);
-  color: var(--branco);
+    radial-gradient(60% 70% at 72% 55%, rgba(221, 231, 245, 0.95) 0%, rgba(245, 247, 250, 0) 70%),
+    linear-gradient(180deg, #F5F7FA 0%, #EEF3FA 60%, #F5F7FA 100%);
+  color: var(--marinho);
+}
+
+.hero .topbar,
+.hero .brand {
+  color: var(--marinho);
+}
+
+.hero .topbar__nav a {
+  color: rgba(11, 31, 58, 0.72);
+}
+
+.hero .topbar__nav a:hover {
+  color: var(--marinho);
+}
+
+.hero .topbar__cta {
+  color: var(--aco) !important;
+  border-color: var(--aco);
+}
+
+.hero .topbar__cta:hover {
+  color: var(--marinho) !important;
+  border-color: var(--marinho);
 }
 
 .orbits {
@@ -331,7 +354,7 @@ ul, ol {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(11, 31, 58, 0.85) 0%, rgba(11, 31, 58, 0.45) 38%, rgba(11, 31, 58, 0) 58%);
+  background: linear-gradient(90deg, rgba(245, 247, 250, 0.85) 0%, rgba(245, 247, 250, 0.45) 38%, rgba(245, 247, 250, 0) 58%);
 }
 
 .hero__inner {
@@ -361,7 +384,7 @@ ul, ol {
   font-size: clamp(2.75rem, 6.6vw, 6.25rem);
   line-height: 0.98;
   letter-spacing: -0.012em;
-  color: var(--branco);
+  color: var(--marinho);
   max-width: 12ch;
 }
 
@@ -383,7 +406,7 @@ ul, ol {
 .hero__lead {
   font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
   line-height: 1.55;
-  color: var(--light-80);
+  color: var(--ink-86);
   max-width: 34rem;
 }
 
@@ -398,13 +421,18 @@ ul, ol {
 .hero__support {
   font-size: 0.9375rem;
   line-height: 1.5;
-  color: var(--light-62);
+  color: rgba(26, 29, 33, 0.62);
   max-width: 19rem;
 }
 
 /* ==========================================
    TEXTURA E FUNDOS
    ========================================== */
+
+html,
+body {
+  overflow-x: clip;
+}
 
 .grain {
   position: relative;
@@ -507,8 +535,20 @@ ul, ol {
    ========================================== */
 
 .apresentacao {
-  background: var(--branco);
+  background: var(--marinho);
+  background-image: radial-gradient(50% 60% at 18% 40%, rgba(44, 74, 110, 0.5) 0%, rgba(11, 31, 58, 0) 70%);
+  color: var(--branco);
   padding: var(--section-py) 0;
+}
+
+.apresentacao.grain::after {
+  opacity: 0.05;
+  mix-blend-mode: screen;
+}
+
+.apresentacao__title,
+.apresentacao figcaption {
+  color: var(--branco);
 }
 
 .apresentacao__inner {
@@ -539,7 +579,7 @@ ul, ol {
 .apresentacao__text p {
   font-size: 1.125rem;
   line-height: 1.65;
-  color: var(--ink-86);
+  color: var(--light-80);
 }
 
 .apresentacao__lede {
@@ -547,7 +587,7 @@ ul, ol {
   font-weight: 500;
   font-size: 1.5rem !important;
   line-height: 1.4 !important;
-  color: var(--marinho) !important;
+  color: var(--branco) !important;
 }
 
 /* ==========================================
@@ -1053,6 +1093,11 @@ ul, ol {
 .tracks__aside {
   position: sticky;
   top: 2.5rem;
+}
+
+.tracks__aside,
+.tracks__body {
+  min-width: 0;
 }
 
 .tracks__title {
@@ -2033,7 +2078,10 @@ ul, ol {
     max-width: none;
   }
 
-  .hero::after,
+  .hero::after {
+    background: linear-gradient(180deg, rgba(245, 247, 250, 0.2) 0%, rgba(245, 247, 250, 0.55) 100%);
+  }
+
   .final::after {
     background: linear-gradient(180deg, rgba(11, 31, 58, 0.35) 0%, rgba(11, 31, 58, 0.7) 100%);
   }
@@ -2276,7 +2324,16 @@ ul, ol {
   }
 
   .mentor__foto {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
+  }
+
+  .mentor__foto img {
+    object-position: 50% 5%;
+  }
+
+  .mentor__foto.fade--portrait {
+    -webkit-mask-image: radial-gradient(ellipse 94% 94% at 50% 44%, #000 64%, rgba(0, 0, 0, 0.6) 86%, transparent 100%);
+    mask-image: radial-gradient(ellipse 94% 94% at 50% 44%, #000 64%, rgba(0, 0, 0, 0.6) 86%, transparent 100%);
   }
 
   .prova__grid {

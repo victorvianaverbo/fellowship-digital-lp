@@ -36,11 +36,12 @@
     var speed = 1;
 
     var rings = [
-      { r: 120, period: 38, phase: 0.6 },
-      { r: 190, period: 52, phase: 2.4 },
-      { r: 260, period: 67, phase: 4.1 },
-      { r: 330, period: 81, phase: 5.5 }
+      { r: 120, period: 22, phase: 0.6 },
+      { r: 190, period: 31, phase: 2.4 },
+      { r: 260, period: 41, phase: 4.1 },
+      { r: 330, period: 52, phase: 5.5 }
     ];
+    var ROT = 0.12; // rad/s: o sistema inteiro gira em volta do nucleo (uma volta a cada ~50 s)
     var flashes = []; // linhas de conexao: {ring, start}
     var lastAngle = [0, 0, 0, 0];
 
@@ -67,15 +68,16 @@
     function point(r, a) {
       var x = r * Math.cos(a);
       var z = r * Math.sin(a);
-      var sx = x * Math.cos(TILT) - z * ASPECT * Math.sin(TILT);
-      var sy = x * Math.sin(TILT) + z * ASPECT * Math.cos(TILT);
+      var tilt = TILT + t * ROT;
+      var sx = x * Math.cos(tilt) - z * ASPECT * Math.sin(tilt);
+      var sy = x * Math.sin(tilt) + z * ASPECT * Math.cos(tilt);
       return { x: cx + sx * base, y: cy + sy * base, depth: (Math.sin(a) + 1) / 2 };
     }
 
     function ring(r, alpha, widthPx) {
       ctx.save();
       ctx.translate(cx, cy);
-      ctx.rotate(TILT);
+      ctx.rotate(TILT + t * ROT);
       ctx.beginPath();
       ctx.ellipse(0, 0, r * base, r * base * ASPECT, 0, 0, Math.PI * 2);
       ctx.strokeStyle = 'rgba(' + PRATA + ', ' + Math.min(1, alpha * lineBoost) + ')';
@@ -107,7 +109,7 @@
 
       // marcas do anel externo: 24 sessions, 6 de gestao
       var outer = rings[3].r;
-      var spin = t * 0.04;
+      var spin = t * 0.35;
       for (i = 0; i < 24; i++) {
         var a = spin + (i / 24) * Math.PI * 2;
         var gest = (i + 1) % 4 === 0;

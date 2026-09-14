@@ -3,7 +3,7 @@
  * Canvas 2D, sem biblioteca. Quatro aneis em perspectiva, um ponto luminoso por anel
  * (os quatro mentores) girando devagar em volta de um nucleo (o caso do fellow).
  * O anel externo tem 24 marcas (as sessions), seis delas em azul (as sessions de gestao).
- * Anima so com a secao visivel e a aba ativa; um unico quadro com movimento reduzido.
+ * Anima so com a secao visivel e a aba ativa; com movimento reduzido roda na metade da velocidade.
  */
 
 (function () {
@@ -60,7 +60,7 @@
       cy = (mobile || centered) ? height * 0.5 : height * 0.55;
       // no celular as orbitas ocupam a largura da tela e giram mais depressa
       base = mobile ? width / 720 : Math.min(height / 560, width / 1100);
-      speed = mobile ? 2 : 1.25;
+      speed = (mobile ? 2 : 1.25) * (reduced ? 0.5 : 1);
       draw(0);
     }
 
@@ -199,7 +199,7 @@
     }
 
     function start() {
-      if (reduced || running) return;
+      if (running) return;
       running = true;
       last = 0;
       raf = requestAnimationFrame(loop);

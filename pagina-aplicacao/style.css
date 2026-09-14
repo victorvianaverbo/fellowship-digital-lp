@@ -2255,7 +2255,11 @@ body {
   }
 
   .hero {
-    padding-top: 2.5rem;
+    padding-top: 0;
+  }
+
+  .hero .topbar__inner {
+    padding-top: 1rem;
   }
 
   .hero__title {

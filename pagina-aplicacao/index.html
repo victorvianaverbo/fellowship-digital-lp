@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fellowship Digital | Subespecialização em negócios digitais para médicos</title>
+  <meta name="description" content="Programa de doze meses em que um board de quatro mentores acompanha o seu negócio educacional a cada quinze dias. Aplicações abertas para a cohort 01.">
+
+  <meta property="og:title" content="Fellowship Digital | Subespecialização em negócios digitais para médicos">
+  <meta property="og:description" content="Programa de doze meses em que um board de quatro mentores acompanha o seu negócio educacional a cada quinze dias. Aplicações abertas para a cohort 01.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#0B1F3A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css">
+
+  <link rel="stylesheet" href="/pagina-aplicacao/style.css">
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js" defer></script>
+  <script src="/pagina-aplicacao/script.js" defer></script>
+  <script src="/pagina-aplicacao/orbits.js" defer></script>
+</head>
+<body>
+
+  <!--
+    ESTRUTURA DA PAGINA
+    ===================
+    1 Hero com topbar integrada (orbitas do board em canvas, orbits.js)
+    2 Apresentacao (foto da visita dissolvida + prosa, 5/7)
+    3 Para quem (ledger, fundo cinza-azulado com grao)
+    4 Formatos habituais (marinho, marca d'agua azul)
+    5 Como funciona (faixa de foto + timeline do ciclo)
+    6 O que recebe (bento)
+    7 Tracks (tabela de ementa + diagrama de 12 meses em SVG)
+    8 Board (fichas com fotos dissolvidas, ordem alfabetica)
+    9 Criterios (fundo cinza-azulado)
+    10 Experiencia (oculta ate os numeros existirem)
+    11 Processo (linha vertical)
+    12 FAQ (indice editorial)
+    13 Final (orbitas do board)
+    14 Rodape
+    Imagens via Netlify CDN. Fontes: Newsreader + Source Sans 3.
+  -->
+
+  <main>
+
+    <!-- 1. HERO (topbar integrada) -->
+    <section class="hero" id="inicio">
+      <canvas class="orbits" data-orbits aria-hidden="true"></canvas>
+      <header class="topbar">
+          <div class="topbar__inner">
+            <a href="/pagina-aplicacao/" class="brand brand--large" aria-label="Fellowship Digital">
+              <svg class="brand__mark" viewBox="0 0 72 72" aria-hidden="true">
+                <circle cx="36" cy="36" r="33" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+                <rect x="27" y="17" width="5" height="38" fill="currentColor"></rect>
+                <rect x="27" y="17" width="22" height="5" fill="currentColor"></rect>
+                <rect x="27" y="32" width="16" height="4" fill="currentColor"></rect>
+                <circle cx="29.5" cy="58" r="2" fill="currentColor"></circle>
+              </svg>
+              <span class="brand__name">Fellowship Digital</span>
+            </a>
+            <nav class="topbar__nav" aria-label="Principal">
+              <a href="#programa">O programa</a>
+              <a href="#board">O board</a>
+              <a href="/aplicar/" class="topbar__cta">Aplicar</a>
+            </nav>
+          </div>
+        </header>
+      
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__title">A subespecialização em negócios digitais para médicos.</h1>
+          <svg class="hero__rule" width="220" height="4" viewBox="0 0 220 4" aria-hidden="true">
+            <line class="hero__rule-line" x1="0" y1="2" x2="220" y2="2" stroke="currentColor" stroke-width="1.5"></line>
+          </svg>
+          <p class="hero__lead">Um programa de doze meses em que um board de quatro mentores acompanha o seu negócio educacional como a medicina forma um especialista: com supervisão, discussão de caso e conduta revisada a cada quinze dias.</p>
+          <div class="hero__action">
+            <a href="/aplicar/" class="btn btn--light">Aplicar para a cohort 01</a>
+            <p class="hero__support">A aplicação leva três minutos e um mentor do board conversa com você antes de qualquer decisão.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. APRESENTACAO -->
+    <section class="apresentacao grain" id="programa">
+      <div class="container apresentacao__inner">
+        <figure class="apresentacao__figure duo fade fade--portrait" data-aos="fade-up">
+          <img src="/.netlify/images?url=/images/apresentacao-visita.jpg&w=900&q=80" width="900" height="1117" alt="Visita de enfermaria: um preceptor discute um caso com dois residentes." loading="lazy">
+        </figure>
+        <div class="apresentacao__text">
+          <h2 class="apresentacao__title" data-aos="fade-up">Um programa de formação, não um curso.</h2>
+          <p class="apresentacao__lede" data-aos="fade-up" data-aos-delay="80">Todo médico sabe como se aprende uma especialidade. Durante anos de faculdade e residência, nenhuma decisão relevante foi tomada sozinha: havia um preceptor, uma visita, uma discussão de caso, e a conduta era revisada antes de virar prescrição.</p>
+          <p data-aos="fade-up" data-aos-delay="160">No digital, a lógica se inverte. O médico decide sozinho o produto, o preço, o modelo de venda e a verba de tráfego, e cada erro custa um trimestre. O Fellowship Digital devolve ao negócio educacional o formato que a medicina já validou: um board de quatro mentores acompanha o seu caso por doze meses, com anamnese na entrada, conduta escrita a cada session e evolução medida na seguinte.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PARA QUEM -->
+    <section class="momentos bg-apoio grain" id="para-quem">
+      <div class="container">
+        <div class="momentos__head" data-aos="fade-up">
+          <h2 class="momentos__title">Três momentos de carreira, uma mesma necessidade.</h2>
+        </div>
+
+        <div class="ledger">
+          <div class="ledger__row" data-aos="fade-up" data-draw>
+            <p class="ledger__ordinal">Primeiro</p>
+            <p class="ledger__text">Quem já vende um curso, uma mentoria ou um preparatório e sente que o negócio depende inteiramente da própria presença: o lançamento rende, mas cansa, e a agenda do consultório ocupa o espaço que sobra.</p>
+          </div>
+          <div class="ledger__row" data-aos="fade-up" data-aos-delay="100" data-draw>
+            <p class="ledger__ordinal">Segundo</p>
+            <p class="ledger__text">Quem tem audiência e demanda, recebe pedidos de curso toda semana e mantém aulas gravadas numa pasta há meses, sem decidir preço, plataforma ou a forma de vender sem comprometer o nome.</p>
+          </div>
+          <div class="ledger__row" data-aos="fade-up" data-aos-delay="200" data-draw>
+            <p class="ledger__ordinal">Terceiro</p>
+            <p class="ledger__text">Quem quer começar e prefere fazer isso com orientação desde o primeiro passo, em vez de gastar um ano descobrindo o que alguém experiente indicaria numa conversa.</p>
+          </div>
+        </div>
+
+        <p class="momentos__close lede" data-aos="fade-up">Nos três casos, o diagnóstico é o mesmo: sobra competência clínica e falta supervisão de negócio.</p>
+      </div>
+    </section>
+
+    <!-- 4. FORMATOS HABITUAIS -->
+    <section class="formatos grain" id="formatos">
+      <svg class="formatos__marca" viewBox="0 0 72 72" aria-hidden="true">
+        <circle cx="36" cy="36" r="33" fill="none" stroke="currentColor" stroke-width="0.9"></circle>
+        <circle cx="36" cy="36" r="28" fill="none" stroke="currentColor" stroke-width="0.45"></circle>
+        <rect x="27" y="17" width="5" height="38" fill="currentColor"></rect>
+        <rect x="27" y="17" width="22" height="5" fill="currentColor"></rect>
+        <rect x="27" y="32" width="16" height="4" fill="currentColor"></rect>
+        <circle cx="29.5" cy="58" r="2" fill="currentColor"></circle>
+      </svg>
+      <div class="container">
+        <div class="formatos__grid">
+          <h2 class="formatos__title" data-aos="fade-up">O problema costuma ser o formato, não o médico.</h2>
+          <p class="formatos__text" data-aos="fade-up" data-aos-delay="100">Os cursos de marketing médico ensinam a encher o consultório, não a operar um negócio de ensino. As mentorias em grupo entregam a mesma aula para centenas de pessoas, e o caso individual raramente é discutido. Agências executam o que lhes é pedido, mas o médico não foi treinado para saber o que pedir. E fazer sozinho funciona, devagar, sem ninguém com quem discutir o caso.</p>
+        </div>
+        <div class="formatos__close" data-aos="fade-up" data-aos-delay="200">
+          <svg class="rule rule--prata" width="220" height="4" viewBox="0 0 220 4" aria-hidden="true" data-draw>
+            <line class="rule__line" x1="0" y1="2" x2="220" y2="2" stroke="currentColor" stroke-width="1.5"></line>
+          </svg>
+          <p class="formatos__quote">Nenhum desses formatos tem o que a formação médica tinha: alguém experiente olhando o caso com frequência e dizendo o que fazer nas próximas duas semanas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. COMO FUNCIONA -->
+    <section class="ciclo grain" id="como-funciona">
+      <div class="container">
+        <div class="ciclo__head">
+          <h2 class="ciclo__title" data-aos="fade-up">A estrutura de uma residência aplicada ao negócio.</h2>
+          <p class="ciclo__intro" data-aos="fade-up" data-aos-delay="100">Tudo começa pela anamnese do negócio, um levantamento que o board inteiro lê antes da primeira session. A partir dela, as board sessions acontecem a cada quinze dias, ao vivo e individualmente, conduzidas por um dos quatro mentores em rodízio.</p>
+        </div>
+
+        <figure class="ciclo__photo duo fade fade--band" data-aos="fade-up">
+          <img src="/.netlify/images?url=/images/ciclo-mesa.jpg&w=1600&q=80" width="1600" height="900" alt="Mesa de discussão de caso: prontuário aberto, caneta e estetoscópio." loading="lazy">
+        </figure>
+
+        <div class="timeline" data-timeline>
+          <svg class="timeline__svg" aria-hidden="true">
+            <line class="timeline__base" x1="0" y1="48" x2="0" y2="48"></line>
+            <path class="timeline__arc" d=""></path>
+            <text class="timeline__arc-label" x="0" y="0">a cada quinze dias</text>
+          </svg>
+          <ol class="timeline__list">
+            <li class="timeline__item timeline__item--1">
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <p class="timeline__name">Anamnese</p>
+              <p class="timeline__desc">O board inteiro lê o caso antes da primeira session.</p>
+            </li>
+            <li class="timeline__item timeline__item--2 timeline__item--filled">
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <p class="timeline__name">Board session</p>
+              <p class="timeline__desc">A cada quinze dias, ao vivo e individual, com um mentor em rodízio.</p>
+            </li>
+            <li class="timeline__item timeline__item--3">
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <p class="timeline__name">Conduta</p>
+              <p class="timeline__desc">Por escrito, define o que será feito nos quinze dias seguintes.</p>
+            </li>
+            <li class="timeline__item timeline__item--4">
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <p class="timeline__name">Evolução</p>
+              <p class="timeline__desc">A session seguinte começa pelo que rodou, o que não rodou e o que muda.</p>
+              <p class="timeline__mobile-note">a cada quinze dias</p>
+            </li>
+            <li class="timeline__item timeline__item--5">
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <p class="timeline__name">Sala de staff</p>
+              <p class="timeline__desc">Entre as sessions, um grupo com os quatro mentores.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="ciclo__after">
+          <p data-aos="fade-up">Cada session termina com uma conduta por escrito, e a seguinte começa pela evolução dessa conduta. Entre elas, a sala de staff reúne o fellow e os quatro mentores. O board tem quatro especialidades porque o negócio tem quatro sistemas que dependem uns dos outros, e ninguém domina os quatro sozinho.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. O QUE RECEBE -->
+    <section class="recebe grain" id="entregas">
+      <div class="container">
+        <div class="recebe__head" data-aos="fade-up">
+          <h2 class="recebe__title">Doze meses de acompanhamento.</h2>
+          <p class="recebe__intro">Ao longo da cohort, o fellow recebe:</p>
+        </div>
+
+        <div class="bento">
+          <article class="bento__cell bento__cell--sessions" data-aos="fade-up" data-aos-delay="80">
+            <p class="bento__big" data-count="24">0</p>
+            <p class="bento__big-label">board sessions</p>
+            <p class="bento__desc">Individuais e ao vivo, uma a cada quinze dias, ao longo de doze meses.</p>
+          </article>
+          <article class="bento__cell bento__cell--anamnese" data-aos="fade-up">
+            <h3 class="bento__name">Anamnese do negócio</h3>
+            <p class="bento__desc">Na entrada, lida pelo board inteiro antes da primeira session.</p>
+          </article>
+          <article class="bento__cell bento__cell--conduta" data-aos="fade-up" data-aos-delay="160">
+            <h3 class="bento__name">Conduta escrita</h3>
+            <p class="bento__desc">Ao fim de cada session, com os quinze dias seguintes definidos.</p>
+          </article>
+          <article class="bento__cell bento__cell--staff" data-aos="fade-up" data-aos-delay="240">
+            <h3 class="bento__name">Sala de staff</h3>
+            <p class="bento__desc">Com os quatro mentores, durante toda a cohort.</p>
+          </article>
+          <article class="bento__cell bento__cell--tracks" data-aos="fade-up" data-aos-delay="320">
+            <p class="bento__num">6</p>
+            <h3 class="bento__name">Seis tracks</h3>
+            <p class="bento__desc">Percorridos na ordem em que o negócio precisa deles.</p>
+          </article>
+          <article class="bento__cell bento__cell--kpis" data-aos="fade-up" data-aos-delay="320">
+            <p class="bento__num">4</p>
+            <h3 class="bento__name">Quatro indicadores</h3>
+            <p class="bento__desc">A evolução acompanhada pelos mesmos números em cada session.</p>
+          </article>
+          <article class="bento__cell bento__cell--certificado" data-aos="fade-up" data-aos-delay="400">
+            <h3 class="bento__name">Certificado de fellow</h3>
+            <p class="bento__desc">Ao concluir, com entrada no corpo de fellows do programa.</p>
+          </article>
+        </div>
+
+        <div class="recebe__cta" data-aos="fade-up">
+          <a href="/aplicar/" class="btn btn--dark">Aplicar para a cohort 01</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. TRACKS -->
+    <section class="tracks bg-apoio grain" id="tracks">
+      <div class="container tracks__inner">
+        <div class="tracks__aside">
+          <h2 class="tracks__title">A ementa, na ordem em que o negócio precisa dela.</h2>
+        </div>
+
+        <div class="tracks__body">
+          <ol class="ementa">
+            <li class="ementa__row" data-aos="fade-up">
+              <span class="ementa__num">01</span>
+              <div>
+                <h3 class="ementa__name">Produto e oferta</h3>
+                <p class="ementa__desc">Concepção do produto educacional, promessa, formato, precificação e a oferta que sustenta o ticket.</p>
+              </div>
+            </li>
+            <li class="ementa__row" data-aos="fade-up" data-aos-delay="70">
+              <span class="ementa__num">02</span>
+              <div>
+                <h3 class="ementa__name">Aquisição</h3>
+                <p class="ementa__desc">Tráfego pago, criativos e a presença no Instagram, no TikTok e no YouTube.</p>
+              </div>
+            </li>
+            <li class="ementa__row" data-aos="fade-up" data-aos-delay="140">
+              <span class="ementa__num">03</span>
+              <div>
+                <h3 class="ementa__name">Conversão</h3>
+                <p class="ementa__desc">Lançamento clássico, perpétuo, lançamento pago e venda ativa, e qual conduta cabe em cada produto.</p>
+              </div>
+            </li>
+            <li class="ementa__row" data-aos="fade-up" data-aos-delay="210">
+              <span class="ementa__num">04</span>
+              <div>
+                <h3 class="ementa__name">Operação</h3>
+                <p class="ementa__desc">Inteligência artificial, automações, plataformas e delegação, para que o negócio rode sem depender da agenda do médico.</p>
+              </div>
+            </li>
+            <li class="ementa__row" data-aos="fade-up" data-aos-delay="280">
+              <span class="ementa__num">05</span>
+              <div>
+                <h3 class="ementa__name">Gestão</h3>
+                <p class="ementa__desc">Financeiro e os indicadores que o board acompanha em cada session.</p>
+              </div>
+            </li>
+            <li class="ementa__row" data-aos="fade-up" data-aos-delay="320">
+              <span class="ementa__num">06</span>
+              <div>
+                <h3 class="ementa__name">Liderança</h3>
+                <p class="ementa__desc">Decisão sob incerteza, delegação de funções e a transição de quem executa para quem comanda.</p>
+              </div>
+            </li>
+          </ol>
+
+          <p class="tracks__close" data-aos="fade-up">Seis ciclos de dois meses, cada um fechado com gestão. O primeiro semestre constrói o negócio; o segundo o amplia e retira o médico da operação.</p>
+
+          <div class="ciclos" data-ciclos>
+            <div class="ciclos__scroll">
+            <svg class="ciclos__svg" viewBox="0 0 1000 224" role="img" aria-label="Doze meses em seis ciclos de dois meses, com uma session de gestão ao fim de cada ciclo">
+              <line class="ciclos__axis" x1="40" y1="150" x2="960" y2="150" pathLength="1"></line>
+            <path class="ciclos__arc" d="M 40.0 150 Q 116.7 52 193.3 150" pathLength="1"></path>
+            <text class="ciclos__label" x="116.7" y="44" text-anchor="middle"><tspan class="ciclos__full">Ciclo 1</tspan><tspan class="ciclos__short">1</tspan></text>
+            <path class="ciclos__arc" d="M 193.3 150 Q 270.0 52 346.7 150" pathLength="1"></path>
+            <text class="ciclos__label" x="270.0" y="44" text-anchor="middle"><tspan class="ciclos__full">Ciclo 2</tspan><tspan class="ciclos__short">2</tspan></text>
+            <path class="ciclos__arc" d="M 346.7 150 Q 423.3 52 500.0 150" pathLength="1"></path>
+            <text class="ciclos__label" x="423.3" y="44" text-anchor="middle"><tspan class="ciclos__full">Ciclo 3</tspan><tspan class="ciclos__short">3</tspan></text>
+            <path class="ciclos__arc ciclos__arc--2" d="M 500.0 150 Q 576.7 52 653.3 150" pathLength="1"></path>
+            <text class="ciclos__label" x="576.7" y="44" text-anchor="middle"><tspan class="ciclos__full">Ciclo 4</tspan><tspan class="ciclos__short">4</tspan></text>
+            <path class="ciclos__arc ciclos__arc--2" d="M 653.3 150 Q 730.0 52 806.7 150" pathLength="1"></path>
+            <text class="ciclos__label" x="730.0" y="44" text-anchor="middle"><tspan class="ciclos__full">Ciclo 5</tspan><tspan class="ciclos__short">5</tspan></text>
+            <path class="ciclos__arc ciclos__arc--2" d="M 806.7 150 Q 883.3 52 960.0 150" pathLength="1"></path>
+            <text class="ciclos__label" x="883.3" y="44" text-anchor="middle"><tspan class="ciclos__full">Ciclo 6</tspan><tspan class="ciclos__short">6</tspan></text>
+            <line class="ciclos__tick" x1="59.2" y1="143" x2="59.2" y2="157" style="--i:0"></line>
+            <line class="ciclos__tick" x1="97.5" y1="143" x2="97.5" y2="157" style="--i:1"></line>
+            <line class="ciclos__tick" x1="135.8" y1="143" x2="135.8" y2="157" style="--i:2"></line>
+            <circle class="ciclos__gestao" cx="174.2" cy="150" r="5" style="--i:3"></circle>
+            <line class="ciclos__tick" x1="212.5" y1="143" x2="212.5" y2="157" style="--i:4"></line>
+            <line class="ciclos__tick" x1="250.8" y1="143" x2="250.8" y2="157" style="--i:5"></line>
+            <line class="ciclos__tick" x1="289.2" y1="143" x2="289.2" y2="157" style="--i:6"></line>
+            <circle class="ciclos__gestao" cx="327.5" cy="150" r="5" style="--i:7"></circle>
+            <line class="ciclos__tick" x1="365.8" y1="143" x2="365.8" y2="157" style="--i:8"></line>
+            <line class="ciclos__tick" x1="404.2" y1="143" x2="404.2" y2="157" style="--i:9"></line>
+            <line class="ciclos__tick" x1="442.5" y1="143" x2="442.5" y2="157" style="--i:10"></line>
+            <circle class="ciclos__gestao" cx="480.8" cy="150" r="5" style="--i:11"></circle>
+            <line class="ciclos__tick" x1="519.2" y1="143" x2="519.2" y2="157" style="--i:12"></line>
+            <line class="ciclos__tick" x1="557.5" y1="143" x2="557.5" y2="157" style="--i:13"></line>
+            <line class="ciclos__tick" x1="595.8" y1="143" x2="595.8" y2="157" style="--i:14"></line>
+            <circle class="ciclos__gestao" cx="634.2" cy="150" r="5" style="--i:15"></circle>
+            <line class="ciclos__tick" x1="672.5" y1="143" x2="672.5" y2="157" style="--i:16"></line>
+            <line class="ciclos__tick" x1="710.8" y1="143" x2="710.8" y2="157" style="--i:17"></line>
+            <line class="ciclos__tick" x1="749.2" y1="143" x2="749.2" y2="157" style="--i:18"></line>
+            <circle class="ciclos__gestao" cx="787.5" cy="150" r="5" style="--i:19"></circle>
+            <line class="ciclos__tick" x1="825.8" y1="143" x2="825.8" y2="157" style="--i:20"></line>
+            <line class="ciclos__tick" x1="864.2" y1="143" x2="864.2" y2="157" style="--i:21"></line>
+            <line class="ciclos__tick" x1="902.5" y1="143" x2="902.5" y2="157" style="--i:22"></line>
+            <circle class="ciclos__gestao" cx="940.8" cy="150" r="5" style="--i:23"></circle>
+            <text class="ciclos__month" x="78.3" y="186" text-anchor="middle">1</text>
+            <text class="ciclos__month" x="155.0" y="186" text-anchor="middle">2</text>
+            <text class="ciclos__month" x="231.7" y="186" text-anchor="middle">3</text>
+            <text class="ciclos__month" x="308.3" y="186" text-anchor="middle">4</text>
+            <text class="ciclos__month" x="385.0" y="186" text-anchor="middle">5</text>
+            <text class="ciclos__month" x="461.7" y="186" text-anchor="middle">6</text>
+            <text class="ciclos__month" x="538.3" y="186" text-anchor="middle">7</text>
+            <text class="ciclos__month" x="615.0" y="186" text-anchor="middle">8</text>
+            <text class="ciclos__month" x="691.7" y="186" text-anchor="middle">9</text>
+            <text class="ciclos__month" x="768.3" y="186" text-anchor="middle">10</text>
+            <text class="ciclos__month" x="845.0" y="186" text-anchor="middle">11</text>
+            <text class="ciclos__month" x="921.7" y="186" text-anchor="middle">12</text>
+              <text class="ciclos__sem" x="270" y="214" text-anchor="middle">Primeiro semestre: constrói</text>
+              <text class="ciclos__sem ciclos__sem--2" x="730" y="214" text-anchor="middle">Segundo semestre: amplia e delega</text>
+            </svg>
+            </div>
+            <p class="ciclos__legend">Cada traço é uma board session. Os pontos em azul são as sessions de gestão que fecham cada ciclo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. BOARD -->
+    <section class="board grain" id="board">
+      <div class="container">
+        <div class="board__head">
+          <h2 class="board__title" data-aos="fade-up">Quatro mentores, quatro áreas do negócio.</h2>
+          <p class="board__intro" data-aos="fade-up" data-aos-delay="100">Quatro pessoas que constroem e operam negócios de educação médica e de software, cada uma responsável por uma parte do sistema.</p>
+        </div>
+
+        <div class="board__grid">
+          <div class="board__col">
+            <article class="mentor" data-aos="fade-up">
+              <div class="mentor__foto fade fade--portrait">
+                <img src="/.netlify/images?url=/images/board/fabrissio.jpg&w=640&q=80" width="640" height="800" alt="Fabrissio Portelinha" loading="lazy">
+                <span class="mentor__veil" aria-hidden="true"></span>
+                <span class="mentor__veil mentor__veil--prata" aria-hidden="true"></span>
+              </div>
+              <div class="mentor__text">
+                <span class="mentor__num">01</span>
+                <span class="mentor__rule" aria-hidden="true"></span>
+                <h3 class="mentor__name">Fabrissio Portelinha</h3>
+                <p class="mentor__area">Visão médica, lançamentos e marketing digital</p>
+                <p class="mentor__bio">Médico, sócio-fundador de uma empresa de educação médica, onde responde por produto, lançamentos e marketing. Conduz a anamnese de entrada e decide com o fellow o produto, a oferta e o modelo de venda.</p>
+              </div>
+            </article>
+            <article class="mentor" data-aos="fade-up" data-aos-delay="240">
+              <div class="mentor__foto fade fade--portrait">
+                <img src="/.netlify/images?url=/images/board/victor.jpg&w=640&q=80" width="640" height="800" alt="Victor Viana" loading="lazy">
+                <span class="mentor__veil" aria-hidden="true"></span>
+                <span class="mentor__veil mentor__veil--prata" aria-hidden="true"></span>
+              </div>
+              <div class="mentor__text">
+                <span class="mentor__num">03</span>
+                <span class="mentor__rule" aria-hidden="true"></span>
+                <h3 class="mentor__name">Victor Viana</h3>
+                <p class="mentor__area">Tráfego e automações</p>
+                <p class="mentor__bio">Há seis anos à frente do marketing e do time de vendas de uma empresa de educação médica. Nas sessions dele, o fellow define funil, campanhas, criativos e as automações que sustentam a venda.</p>
+              </div>
+            </article>
+          </div>
+          <div class="board__col board__col--shift">
+            <article class="mentor" data-aos="fade-up" data-aos-delay="120">
+              <div class="mentor__foto fade fade--portrait">
+                <img src="/.netlify/images?url=/images/board/gabriel.jpg&w=640&q=80" width="640" height="800" alt="Gabriel Buzzi" loading="lazy">
+                <span class="mentor__veil" aria-hidden="true"></span>
+                <span class="mentor__veil mentor__veil--prata" aria-hidden="true"></span>
+              </div>
+              <div class="mentor__text">
+                <span class="mentor__num">02</span>
+                <span class="mentor__rule" aria-hidden="true"></span>
+                <h3 class="mentor__name">Gabriel Buzzi</h3>
+                <p class="mentor__area">Inteligência artificial, plataformas, tecnologia e negócio</p>
+                <p class="mentor__bio">Programador e fundador de empresas de software por assinatura. Analisa a empresa do fellow como um todo, da tecnologia ao processo, e desenha com ele a operação.</p>
+              </div>
+            </article>
+            <article class="mentor" data-aos="fade-up" data-aos-delay="360">
+              <div class="mentor__foto fade fade--portrait">
+                <img src="/.netlify/images?url=/images/board/vinicius.jpg&w=640&q=80" width="640" height="800" alt="Vinícius Tristão" loading="lazy">
+                <span class="mentor__veil" aria-hidden="true"></span>
+                <span class="mentor__veil mentor__veil--prata" aria-hidden="true"></span>
+              </div>
+              <div class="mentor__text">
+                <span class="mentor__num">04</span>
+                <span class="mentor__rule" aria-hidden="true"></span>
+                <h3 class="mentor__name">Vinícius Tristão</h3>
+                <p class="mentor__area">Gestão</p>
+                <p class="mentor__bio">Médico, sócio-fundador de uma empresa de educação médica, onde responde pela gestão: financeiro, indicadores e time. Fecha cada ciclo de dois meses com caixa e margem, e conduz a delegação no segundo semestre.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="board__close" data-aos="fade-up">
+          <svg class="rule rule--prata" width="220" height="4" viewBox="0 0 220 4" aria-hidden="true" data-draw>
+            <line class="rule__line" x1="0" y1="2" x2="220" y2="2" stroke="currentColor" stroke-width="1.5"></line>
+          </svg>
+          <p class="board__quote">O fellow vê cada mentor a cada dois meses e fala com os quatro na sala de staff ao longo de toda a cohort.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CRITERIOS -->
+    <section class="criterios bg-apoio grain" id="criterios">
+      <div class="container">
+        <h2 class="criterios__title" data-aos="fade-up">Para quem é, e para quem não é.</h2>
+        <div class="criterios__grid">
+          <div class="criterios__col criterios__col--sim" data-aos="fade-up">
+            <h3 class="criterios__sub">É para médicos que</h3>
+            <p>Têm o que ensinar, seja uma especialidade, uma técnica, um preparatório ou uma visão de carreira, em qualquer um dos três momentos: já vendendo, com audiência e sem produto, ou começando do zero. É preciso reservar uma session a cada quinze dias e executar a conduta entre elas.</p>
+          </div>
+          <div class="criterios__col criterios__col--nao" data-aos="fade-up" data-aos-delay="120">
+            <h3 class="criterios__sub">Não é um programa para quem</h3>
+            <p>Procura conteúdo gravado para assistir quando der, espera que alguém opere o negócio no seu lugar, ou busca promessa de faturamento com prazo. O board não faz esse tipo de promessa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. EXPERIENCIA (oculta ate os numeros existirem) -->
+    <section class="prova" id="experiencia" hidden>
+      <div class="container">
+        <div class="prova__head">
+          <h2 class="prova__title" data-aos="fade-up">A experiência de quem conduz.</h2>
+          <p class="prova__intro" data-aos="fade-up" data-aos-delay="100">Os quatro mentores operam, hoje, negócios de educação médica, e os números abaixo são deles.</p>
+        </div>
+        <div class="prova__grid">
+          <div class="prova__cell">
+            <p class="prova__num"><span data-count="0">0</span></p>
+            <p class="prova__label" data-aos="fade-up" data-aos-delay="100">alunos formados em negócios educacionais médicos conduzidos pelo board</p>
+          </div>
+          <div class="prova__cell">
+            <p class="prova__num">R$ <span data-count="0">0</span></p>
+            <p class="prova__label" data-aos="fade-up" data-aos-delay="200">em faturamento gerado em educação médica</p>
+          </div>
+          <div class="prova__cell">
+            <p class="prova__num"><span data-count="0">0</span></p>
+            <p class="prova__label" data-aos="fade-up" data-aos-delay="300">lançamentos conduzidos</p>
+          </div>
+          <div class="prova__cell">
+            <p class="prova__num"><span data-count="0">0</span></p>
+            <p class="prova__label" data-aos="fade-up" data-aos-delay="400">anos operando educação médica</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. PROCESSO -->
+    <section class="processo grain" id="aplicar">
+      <div class="container processo__inner">
+        <div class="processo__aside">
+          <h2 class="processo__title">A entrada é por aplicação.</h2>
+        </div>
+        <div class="processo__body">
+          <ol class="etapas" data-etapas>
+            <svg class="etapas__svg" aria-hidden="true"><line class="etapas__line" x1="20" y1="0" x2="20" y2="0"></line></svg>
+            <li class="etapa" data-aos="fade-up" data-aos-delay="200">
+              <span class="etapa__num">1</span>
+              <div>
+                <h3 class="etapa__name">Formulário de aplicação</h3>
+                <p class="etapa__text">Três minutos: quem você é, o que ensina e onde o negócio está.</p>
+              </div>
+            </li>
+            <li class="etapa" data-aos="fade-up" data-aos-delay="500">
+              <span class="etapa__num">2</span>
+              <div>
+                <h3 class="etapa__name">Conversa com um mentor do board</h3>
+                <p class="etapa__text">Um mentor entra em contato pelo WhatsApp em até [X] horas para discutir o seu caso. O investimento é apresentado nessa conversa.</p>
+              </div>
+            </li>
+            <li class="etapa" data-aos="fade-up" data-aos-delay="800">
+              <span class="etapa__num">3</span>
+              <div>
+                <h3 class="etapa__name">Entrada na cohort</h3>
+                <p class="etapa__text">Quando o board entende que o negócio evolui em doze meses, você recebe a anamnese, entra na sala de staff e marca a primeira session.</p>
+              </div>
+            </li>
+          </ol>
+          <p class="processo__close" data-aos="fade-up">Cada cohort é pequena por definição, e a aplicação existe para que o board só assuma casos em que acredita.</p>
+          <div class="processo__cta" data-aos="fade-up">
+            <a href="/aplicar/" class="btn btn--dark">Aplicar para a cohort 01</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. FAQ -->
+    <section class="faq bg-apoio grain" id="perguntas">
+      <div class="container faq__inner">
+        <div class="faq__aside">
+          <h2 class="faq__title">Perguntas frequentes.</h2>
+          <nav class="faq__index" aria-label="Índice das perguntas" data-faq-index>
+            <a href="#faq-1">É necessário já ter um produto para aplicar?</a>
+            <a href="#faq-2">É necessário ter audiência?</a>
+            <a href="#faq-3">Quanto tempo o programa exige?</a>
+            <a href="#faq-4">Quem conduz as sessions?</a>
+            <a href="#faq-5">As sessions são em grupo?</a>
+            <a href="#faq-6">As sessions são gravadas?</a>
+            <a href="#faq-7">Qual é o investimento?</a>
+            <a href="#faq-8">Há garantia?</a>
+            <a href="#faq-9">O programa aceita profissionais que não são médicos?</a>
+            <a href="#faq-10">Qual é a diferença para uma mentoria?</a>
+          </nav>
+        </div>
+        <dl class="faq__list">
+          <div class="faq__item" id="faq-1" data-aos="fade-up">
+            <dt>É necessário já ter um produto para aplicar?</dt>
+            <dd>Não. A anamnese define por onde cada fellow começa, e quem vai lançar o primeiro produto passa pelo track de produto e oferta antes de qualquer investimento em tráfego.</dd>
+          </div>
+          <div class="faq__item" id="faq-2" data-aos="fade-up" data-aos-delay="60">
+            <dt>É necessário ter audiência?</dt>
+            <dd>Não. Há caminhos de aquisição que não dependem de seguidores, e o board escolhe o caminho depois de ler o caso.</dd>
+          </div>
+          <div class="faq__item" id="faq-3" data-aos="fade-up" data-aos-delay="120">
+            <dt>Quanto tempo o programa exige?</dt>
+            <dd>Uma session de [60 a 90] minutos a cada quinze dias e o tempo de executar a conduta entre elas. O programa foi desenhado para quem mantém consultório e plantão.</dd>
+          </div>
+          <div class="faq__item" id="faq-4" data-aos="fade-up" data-aos-delay="180">
+            <dt>Quem conduz as sessions?</dt>
+            <dd>Os quatro mentores, em rodízio. O fellow vê cada um a cada dois meses e fala com os quatro na sala de staff.</dd>
+          </div>
+          <div class="faq__item" id="faq-5" data-aos="fade-up" data-aos-delay="240">
+            <dt>As sessions são em grupo?</dt>
+            <dd>Não. As 24 board sessions são individuais. O único espaço coletivo é a sala de staff, que é do fellow com os quatro mentores.</dd>
+          </div>
+          <div class="faq__item" id="faq-6" data-aos="fade-up" data-aos-delay="300">
+            <dt>As sessions são gravadas?</dt>
+            <dd>[Sim, e ficam disponíveis ao fellow durante a cohort. / Não. A conduta escrita ao fim de cada session é o registro.]</dd>
+          </div>
+          <div class="faq__item" id="faq-7" data-aos="fade-up">
+            <dt>Qual é o investimento?</dt>
+            <dd>O valor é apresentado na conversa com o mentor, depois da aplicação. Trata-se de um investimento de cinco dígitos por doze meses de acompanhamento individual.</dd>
+          </div>
+          <div class="faq__item" id="faq-8" data-aos="fade-up" data-aos-delay="60">
+            <dt>Há garantia?</dt>
+            <dd>Não. A seleção cumpre esse papel: o board só entra em casos em que acredita haver evolução em doze meses.</dd>
+          </div>
+          <div class="faq__item" id="faq-9" data-aos="fade-up" data-aos-delay="120">
+            <dt>O programa aceita profissionais que não são médicos?</dt>
+            <dd>Não. O programa é para médicos que ensinam ou pretendem ensinar.</dd>
+          </div>
+          <div class="faq__item" id="faq-10" data-aos="fade-up" data-aos-delay="180">
+            <dt>Qual é a diferença para uma mentoria?</dt>
+            <dd>Uma mentoria costuma reunir um mentor, uma turma e um método. Aqui são quatro áreas de especialidade acompanhando um caso, a cada quinze dias, com conduta escrita e evolução medida.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 13. FINAL -->
+    <section class="final" id="final">
+      <canvas class="orbits" data-orbits="center" data-strength="0.7" aria-hidden="true"></canvas>
+      <div class="container final__inner">
+        <div class="final__copy">
+          <h2 class="final__title" data-aos="fade-up">A cohort 01 está com aplicações abertas.</h2>
+          <svg class="rule rule--prata" width="220" height="4" viewBox="0 0 220 4" aria-hidden="true" data-draw>
+            <line class="rule__line" x1="0" y1="2" x2="220" y2="2" stroke="currentColor" stroke-width="1.5"></line>
+          </svg>
+          <p class="final__text" data-aos="fade-up" data-aos-delay="100">Se você tem o que ensinar e prefere construir o negócio disso com supervisão, a aplicação é o primeiro passo. Um mentor do board conversa com você antes de qualquer decisão, sem compromisso até essa conversa. A cohort 01 começa em [data].</p>
+          <a href="/aplicar/" class="btn btn--light final__btn">Aplicar para a cohort 01</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 14. RODAPE -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <a href="/pagina-aplicacao/" class="brand brand--small" aria-label="Fellowship Digital">
+          <svg class="brand__mark" viewBox="0 0 72 72" aria-hidden="true">
+            <circle cx="36" cy="36" r="33" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+            <rect x="27" y="17" width="5" height="38" fill="currentColor"></rect>
+            <rect x="27" y="17" width="22" height="5" fill="currentColor"></rect>
+            <rect x="27" y="32" width="16" height="4" fill="currentColor"></rect>
+            <circle cx="29.5" cy="58" r="2" fill="currentColor"></circle>
+          </svg>
+          <span class="brand__name">Fellowship Digital</span>
+        </a>
+        <p class="footer__tag">Subespecialização em negócios digitais para médicos.</p>
+        <nav class="footer__nav" aria-label="Rodapé">
+          <a href="https://instagram.com/fellowshipdigital" rel="noopener">Instagram</a>
+          <a href="/aplicar/">Aplicar</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; <span id="year"></span> Fellowship Digital.</p>
+        <a href="/privacidade/">Política de privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

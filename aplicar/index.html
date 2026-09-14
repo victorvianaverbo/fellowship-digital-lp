@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aplicação para a cohort 01 | Fellowship Digital</title>
+  <meta name="description" content="Formulário de aplicação para a cohort 01 do Fellowship Digital. Onze perguntas, cerca de três minutos.">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#0B1F3A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css">
+
+  <link rel="stylesheet" href="/pagina-aplicacao/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js" defer></script>
+  <script src="/pagina-aplicacao/script.js" defer></script>
+</head>
+<body class="page-aplicar">
+
+  <header class="topbar topbar--form">
+    <div class="topbar__inner">
+      <a href="/pagina-aplicacao/" class="brand" aria-label="Fellowship Digital">
+        <svg class="brand__mark" viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="33" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+          <rect x="27" y="17" width="5" height="38" fill="currentColor"></rect>
+          <rect x="27" y="17" width="22" height="5" fill="currentColor"></rect>
+          <rect x="27" y="32" width="16" height="4" fill="currentColor"></rect>
+          <circle cx="29.5" cy="58" r="2" fill="currentColor"></circle>
+        </svg>
+        <span class="brand__name">Fellowship Digital</span>
+      </a>
+      <p class="topbar__note">Aplicação para a cohort 01</p>
+    </div>
+    <div class="progress" aria-hidden="true"><span class="progress__bar" data-progress></span></div>
+  </header>
+
+  <main class="aplicar">
+    <form name="aplicacao" method="POST" action="/obrigado/" data-netlify="true" netlify-honeypot="bot-field" data-aplicacao class="aplicar__form" novalidate>
+      <input type="hidden" name="form-name" value="aplicacao">
+      <input type="hidden" name="triagem" value="">
+      <p hidden><label>Não preencha: <input name="bot-field"></label></p>
+
+      <!-- Tela de abertura -->
+      <section class="tela is-active" data-tela="abertura">
+        <div class="tela__inner">
+          <h1 class="tela__question">Aplicação para a cohort 01</h1>
+          <p class="tela__support">São onze perguntas e cerca de três minutos. Um mentor do board lê as respostas antes de entrar em contato.</p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Começar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="1">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 1 de 11</p>
+          <label class="tela__question" for="nome">Como você se chama?</label>
+          <input class="tela__input" type="text" id="nome" name="nome" autocomplete="name" required>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="2">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 2 de 11</p>
+          <label class="tela__question" for="telefone">Qual é o seu WhatsApp?</label>
+          <p class="tela__support">É por ele que o mentor entra em contato.</p>
+          <input class="tela__input" type="tel" id="telefone" name="telefone" autocomplete="tel" required>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="3">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 3 de 11</p>
+          <label class="tela__question" for="email">Qual é o seu e-mail?</label>
+          <input class="tela__input" type="email" id="email" name="email" autocomplete="email" required>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="4">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 4 de 11</p>
+          <fieldset class="tela__fieldset">
+            <legend class="tela__question">Você é médico?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="medico" value="Sim" required><span>Sim</span></label>
+              <label class="opcao"><input type="radio" name="medico" value="Não" data-goto="encerramento-a"><span>Não</span></label>
+            </div>
+          </fieldset>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="5">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 5 de 11</p>
+          <label class="tela__question" for="especialidade">Qual é a sua especialidade e o seu CRM?</label>
+          <p class="tela__support">Exemplo: Cardiologia, CRM 00000/SP</p>
+          <input class="tela__input" type="text" id="especialidade" name="especialidade" required>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="6">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 6 de 11</p>
+          <fieldset class="tela__fieldset">
+            <legend class="tela__question">Em que momento o seu negócio educacional está?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="momento" value="Quero começar do zero" required><span>Quero começar do zero</span></label>
+              <label class="opcao"><input type="radio" name="momento" value="Tenho audiência e ainda não tenho produto"><span>Tenho audiência e ainda não tenho produto</span></label>
+              <label class="opcao"><input type="radio" name="momento" value="Já vendo e quero crescer"><span>Já vendo e quero crescer</span></label>
+            </div>
+          </fieldset>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="7">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 7 de 11</p>
+          <label class="tela__question" for="ensina">O que você ensina, ou pretende ensinar?</label>
+          <p class="tela__support">Uma frase é suficiente.</p>
+          <input class="tela__input" type="text" id="ensina" name="ensina" required>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="8">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 8 de 11</p>
+          <fieldset class="tela__fieldset">
+            <legend class="tela__question">Quanto o seu negócio educacional fatura por mês hoje?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="faturamento" value="Ainda não fatura" required><span>Ainda não fatura</span></label>
+              <label class="opcao"><input type="radio" name="faturamento" value="Até R$ 10 mil"><span>Até R$ 10 mil</span></label>
+              <label class="opcao"><input type="radio" name="faturamento" value="De R$ 10 a 30 mil"><span>De R$ 10 a 30 mil</span></label>
+              <label class="opcao"><input type="radio" name="faturamento" value="De R$ 30 a 100 mil"><span>De R$ 30 a 100 mil</span></label>
+              <label class="opcao"><input type="radio" name="faturamento" value="Acima de R$ 100 mil"><span>Acima de R$ 100 mil</span></label>
+            </div>
+          </fieldset>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="9">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 9 de 11</p>
+          <fieldset class="tela__fieldset">
+            <legend class="tela__question">O Fellowship é um investimento de cinco dígitos por doze meses de acompanhamento individual. Você está em condição de decidir sobre isso nas próximas semanas?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="investimento" value="Sim" required><span>Sim</span></label>
+              <label class="opcao"><input type="radio" name="investimento" value="Ainda não" data-goto="encerramento-b"><span>Ainda não</span></label>
+            </div>
+          </fieldset>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="10">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 10 de 11</p>
+          <fieldset class="tela__fieldset">
+            <legend class="tela__question">Como você chegou até aqui?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="origem" value="Instagram do Victor" required><span>Instagram do Victor</span></label>
+              <label class="opcao"><input type="radio" name="origem" value="Instagram do Buzzi"><span>Instagram do Buzzi</span></label>
+              <label class="opcao"><input type="radio" name="origem" value="Instagram do Fabrissio"><span>Instagram do Fabrissio</span></label>
+              <label class="opcao"><input type="radio" name="origem" value="Instagram do Vinícius"><span>Instagram do Vinícius</span></label>
+              <label class="opcao"><input type="radio" name="origem" value="Anúncio"><span>Anúncio</span></label>
+              <label class="opcao"><input type="radio" name="origem" value="Indicação"><span>Indicação</span></label>
+              <label class="opcao"><input type="radio" name="origem" value="E-mail"><span>E-mail</span></label>
+            </div>
+          </fieldset>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="11">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 11 de 11</p>
+          <fieldset class="tela__fieldset">
+            <legend class="tela__question">Você consegue reservar uma session a cada quinze dias por doze meses e executar a conduta entre elas?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="disponibilidade" value="Sim" required><span>Sim</span></label>
+              <label class="opcao"><input type="radio" name="disponibilidade" value="Não"><span>Não</span></label>
+            </div>
+          </fieldset>
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="form-feedback"></div>
+          <div class="tela__nav">
+            <button type="submit" class="btn btn--dark">Enviar aplicação</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Encerramento A: nao e medico -->
+      <section class="tela tela--fim" data-tela="encerramento-a">
+        <div class="tela__inner">
+          <h2 class="tela__question">O Fellowship Digital é um programa para médicos.</h2>
+          <p class="tela__support">Agradecemos o interesse. O programa foi desenhado para médicos que ensinam ou pretendem ensinar, e não conseguiríamos atender bem fora desse perfil. Se quiser acompanhar o trabalho do board, o Instagram é <a href="https://instagram.com/fellowshipdigital" rel="noopener">@fellowshipdigital</a>.</p>
+          <div class="tela__nav">
+            <a href="/pagina-aplicacao/" class="tela__back">Voltar ao início</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Encerramento B: ainda nao esta em condicao de investir -->
+      <section class="tela tela--fim" data-tela="encerramento-b">
+        <div class="tela__inner">
+          <h2 class="tela__question">Tudo bem. O board continua por aqui.</h2>
+          <p class="tela__support">A cohort 01 não será a última. As próximas aplicações abrem pelo Instagram <a href="https://instagram.com/fellowshipdigital" rel="noopener">@fellowshipdigital</a>, e quando fizer sentido para você, é só aplicar de novo.</p>
+          <div class="tela__nav">
+            <a href="/pagina-aplicacao/" class="tela__back">Voltar ao início</a>
+          </div>
+        </div>
+      </section>
+    </form>
+  </main>
+
+</body>
+</html>

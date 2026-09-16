@@ -18,6 +18,80 @@
   status = 301
   force = true
 
+# Pagina nova (lp-v2) agora vive na raiz; os assets continuam em /lp-v2/
+[[redirects]]
+  from = "/lp-v2/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lp-v2/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+# Arquivos internos nunca vao para o publico (copy, layout, pesquisa, framework)
+[[redirects]]
+  from = "/.agent/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/aplicar/google-sheets/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/_backup_v1/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/lp-v2/copy.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/lp-v2/layout.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/lp-v2/critical.css"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/pagina-aplicacao/copy.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/pagina-aplicacao/layout.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/pagina-aplicacao/pesquisa.md"
+  to = "/404"
+  status = 404
+  force = true
+
 # www -> apex
 [[redirects]]
   from = "https://www.fellowshipdigital.com.br/*"

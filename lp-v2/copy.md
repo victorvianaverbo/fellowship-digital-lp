@@ -1,4 +1,4 @@
-# Copy - Fellowship Digital | Página de aplicação
+# Copy - Fellowship Digital | Página de aplicação (lp-v2)
 
 > Página de aplicação da cohort 01. Modelo longform, sem VSL, para tráfego frio (anúncio, lista) e morno (Instagram dos mentores, indicação).
 > TOM: institucional e fluido, como a página de um programa de pós-graduação. Parágrafos curtos, frases encadeadas, sem frases de efeito em série, sem rótulos em caixa alta, sem travessões, sem emoji. Versão de 14/09/2026 com cerca de 30% menos texto que a anterior.
@@ -8,7 +8,7 @@
 > AJUSTES DE 16/09/2026 (Buzzi e Fabrissio): sem "subespecialização" na headline, sem "residência" (remete a experiência ruim do médico), produto no ar no primeiro ciclo de dois meses, sem promessa de faturamento.
 > BOARD em ordem alfabética: Fabrissio Portelinha, Gabriel Buzzi, Victor Viana, Vinícius Tristão.
 > PROGRAMA: 12 meses, 24 board sessions quinzenais, 4 mentores em rodízio, 6 tracks, sala de staff.
-> IDENTIDADE: v2 Colégio (marinho, prata, branco-frio, mais azul elétrico #3B6FD6 e azul gelo #DDE7F5; Newsreader + Source Sans 3). Hero e final com o efeito de órbitas do board; fotos em duotone (visita e mesa) e retratos reais do board, todas dissolvidas no fundo.
+> IDENTIDADE: Brand Guide v1 (Claude Design, 16/09/2026): grafite #2A2A2A, osso #E9E2D3, linho #F7F3EA, ardósia #4F6D8F (um destaque por tela); Libre Caslon Text + Geologica; símbolo cruz aberta; fundo Horizonte (grade em perspectiva + linha de conduta).
 
 ---
 
@@ -18,14 +18,14 @@
 - **Subheadline:** Um programa de doze meses em que um board de quatro mentores acompanha o seu negócio educacional como a medicina forma um especialista: com supervisão, discussão de caso e conduta revisada a cada quinze dias.
 - **CTA primário:** Aplicar para a cohort 01
 - **Texto de apoio ao CTA:** A aplicação leva três minutos e um mentor do board conversa com você antes de qualquer decisão.
-- **Fundo:** órbitas do board (efeito em canvas): quatro anéis, um ponto por mentor, 24 marcas de session, núcleo do fellow.
+- **Fundo:** Horizonte: grade em perspectiva na base e linha de conduta em ardósia. Símbolo grande montado quadrante a quadrante.
 
 ---
 
 ## Seção: Apresentação
 
 - **Título:** Um programa de formação, não um curso.
-- **Imagem:** visita de enfermaria, preceptor e dois médicos em formação, em duotone.
+- **Imagem:** visita de enfermaria, preceptor e dois médicos em formação, em preto e branco sobre osso.
 - **Conteúdo:**
 Todo médico sabe como se aprende uma especialidade. Durante toda a formação, nenhuma decisão relevante foi tomada sozinha: havia um preceptor, uma visita, uma discussão de caso, e a conduta era revisada antes de virar prescrição.
 
@@ -190,7 +190,7 @@ No digital, a lógica se inverte. O médico decide sozinho o produto, o preço, 
 ## Seção final
 
 - **Título:** A cohort 01 está com aplicações abertas.
-- **Fundo:** órbitas do board, centralizadas.
+- **Fundo:** Horizonte na base e os quatro quadrantes do símbolo convergindo dos cantos da tela até formar o símbolo acima do título (ver layout.md, seção Final).
 - **Conteúdo:** Se você tem o que ensinar e prefere construir o negócio disso com supervisão, a aplicação é o primeiro passo. Um mentor do board conversa com você antes de qualquer decisão, sem compromisso até essa conversa. A cohort 01 começa em [data].
 - **CTA:** Aplicar para a cohort 01
 

@@ -738,14 +738,26 @@ ul {
   right: -20%;
   bottom: -10%;
   height: 100%;
-  background-image:
-    linear-gradient(var(--grade) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grade) 1px, transparent 1px);
-  background-size: 56px 56px;
+  overflow: hidden;
   transform: perspective(600px) rotateX(58deg);
   transform-origin: 50% 100%;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
   mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
+}
+
+/* O desenho da grade desliza por transform (sem repintura a cada quadro) */
+.horizonte__grade::before {
+  content: '';
+  position: absolute;
+  top: -56px;
+  left: -56px;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(var(--grade) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+  background-size: 56px 56px;
+  will-change: transform;
   animation: grade-desliza 24s linear infinite;
 }
 
@@ -798,13 +810,13 @@ ul {
 .is-pronto .no { opacity: 1; }
 
 @keyframes grade-desliza {
-  from { background-position: 0 0, 0 0; }
-  to   { background-position: 0 56px, 56px 0; }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(56px, 56px, 0); }
 }
 
 @keyframes grade-desliza-inversa {
-  from { background-position: 0 0, 0 0; }
-  to   { background-position: 0 -56px, -56px 0; }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-56px, -56px, 0); }
 }
 
 /* ==========================================
@@ -2954,14 +2966,25 @@ ul {
   right: -20%;
   top: -10%;
   height: 100%;
-  background-image:
-    linear-gradient(var(--osso-08) 1px, transparent 1px),
-    linear-gradient(90deg, var(--osso-08) 1px, transparent 1px);
-  background-size: 56px 56px;
+  overflow: hidden;
   transform: perspective(600px) rotateX(-58deg);
   transform-origin: 50% 0%;
   -webkit-mask-image: linear-gradient(0deg, transparent 0%, #000 55%);
   mask-image: linear-gradient(0deg, transparent 0%, #000 55%);
+}
+
+.prova__grade::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -56px;
+  bottom: -56px;
+  background-image:
+    linear-gradient(var(--osso-08) 1px, transparent 1px),
+    linear-gradient(90deg, var(--osso-08) 1px, transparent 1px);
+  background-size: 56px 56px;
+  will-change: transform;
   animation: grade-desliza-inversa 30s linear infinite;
 }
 
@@ -4754,6 +4777,58 @@ html:not(.js) .final__simbolo-estatico {
   }
 }
 
+
+/* ==========================================
+   DESEMPENHO: secoes abaixo da dobra so sao
+   calculadas quando chegam perto da tela.
+   Alturas medidas (mobile / desktop); "auto"
+   guarda a altura real depois do primeiro render.
+   ========================================== */
+
+.paraquem   { --cis: 1680px; }
+.formatos   { --cis: 1610px; }
+.ciclo      { --cis: 2340px; }
+.entregas   { --cis: 2150px; }
+.ementa     { --cis: 2110px; }
+.board      { --cis: 1850px; }
+.criterios  { --cis: 1330px; }
+.prova      { --cis: 1160px; }
+.aplicacao  { --cis: 1350px; }
+.perguntas  { --cis: 1610px; }
+.final      { --cis: 900px; }
+.rodape     { --cis: 480px; }
+
+@media (min-width: 1025px) {
+  .paraquem   { --cis: 1950px; }
+  .formatos   { --cis: 1800px; }
+  .ciclo      { --cis: 6030px; }
+  .entregas   { --cis: 1770px; }
+  .ementa     { --cis: 1940px; }
+  .board      { --cis: 2510px; }
+  .criterios  { --cis: 1210px; }
+  .prova      { --cis: 1090px; }
+  .aplicacao  { --cis: 1130px; }
+  .perguntas  { --cis: 1340px; }
+  .final      { --cis: 1800px; }
+  .rodape     { --cis: 390px; }
+}
+
+.paraquem,
+.formatos,
+.ciclo,
+.entregas,
+.ementa,
+.board,
+.criterios,
+.prova,
+.aplicacao,
+.perguntas,
+.final,
+.rodape {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--cis);
+}
+
 /* ==========================================
    MOVIMENTO REDUZIDO
    ========================================== */
@@ -4817,6 +4892,11 @@ html:not(.js) .final__simbolo-estatico {
   .hero__legenda,
   .no {
     opacity: 1;
+  }
+
+  .horizonte__grade::before,
+  .prova__grade::before {
+    animation: none;
   }
 
   .horizonte__linha,

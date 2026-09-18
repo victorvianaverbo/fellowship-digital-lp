@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Aplicação para a cohort 01 | Fellowship Digital</title>
-  <meta name="description" content="Formulário de aplicação para a cohort 01 do Fellowship Digital. Onze perguntas, cerca de três minutos.">
+  <meta name="description" content="Formulário de aplicação para a cohort 01 do Fellowship Digital. Treze perguntas, cerca de quatro minutos.">
   <meta name="robots" content="noindex">
 
   <meta property="og:site_name" content="Fellowship Digital">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Aplicação para a cohort 01 | Fellowship Digital">
-  <meta property="og:description" content="Onze perguntas, cerca de três minutos. Um mentor do board lê cada aplicação.">
+  <meta property="og:description" content="Treze perguntas, cerca de quatro minutos. Um mentor do board lê cada aplicação.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fellowshipdigital.com.br/aplicar/">
   <meta property="og:image" content="https://fellowshipdigital.com.br/images/og-fellowship.png">
@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="/pagina-aplicacao/style.css?v=20260914c">
 
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js" defer></script>
-  <script src="/pagina-aplicacao/script.js?v=20260914c" defer></script>
+  <script src="/pagina-aplicacao/script.js?v=20260918a" defer></script>
 </head>
 <body class="page-aplicar">
 
@@ -57,7 +57,7 @@
 
   <main class="aplicar">
     <!-- Envio para o Google Sheets: cole a URL do Web App do Apps Script em data-endpoint (ver /aplicar/google-sheets/README.md) -->
-    <form name="aplicacao" method="POST" data-aplicacao data-endpoint="" class="aplicar__form" novalidate>
+    <form name="aplicacao" method="POST" data-aplicacao data-endpoint="https://script.google.com/macros/s/AKfycbxW3kYpI4cfsYFdSD48MZyv5fyVuBZ-sMTN2NCweJAcmgQE3dzLhphWvEhRcVJ-MZ3r/exec" class="aplicar__form" novalidate>
       <input type="hidden" name="triagem" value="">
       <p hidden><label>Não preencha: <input name="bot-field"></label></p>
 
@@ -65,7 +65,7 @@
       <section class="tela is-active" data-tela="abertura">
         <div class="tela__inner">
           <h1 class="tela__question">Aplicação para a cohort 01</h1>
-          <p class="tela__support">São onze perguntas e cerca de três minutos. Um mentor do board lê as respostas antes de entrar em contato.</p>
+          <p class="tela__support">São treze perguntas e cerca de quatro minutos. Um mentor do board lê as respostas antes de entrar em contato.</p>
           <div class="tela__nav">
             <button type="button" class="btn btn--dark" data-next>Começar</button>
           </div>
@@ -74,7 +74,7 @@
 
       <section class="tela" data-tela="1">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 1 de 11</p>
+          <p class="tela__count">Pergunta 1 de 13</p>
           <label class="tela__question" for="nome">Como você se chama?</label>
           <input class="tela__input" type="text" id="nome" name="nome" autocomplete="name" required>
           <p class="tela__error" aria-live="polite"></p>
@@ -87,7 +87,7 @@
 
       <section class="tela" data-tela="2">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 2 de 11</p>
+          <p class="tela__count">Pergunta 2 de 13</p>
           <label class="tela__question" for="telefone">Qual é o seu WhatsApp?</label>
           <p class="tela__support">É por ele que o mentor entra em contato.</p>
           <input class="tela__input" type="tel" id="telefone" name="telefone" autocomplete="tel" required>
@@ -101,7 +101,7 @@
 
       <section class="tela" data-tela="3">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 3 de 11</p>
+          <p class="tela__count">Pergunta 3 de 13</p>
           <label class="tela__question" for="email">Qual é o seu e-mail?</label>
           <input class="tela__input" type="email" id="email" name="email" autocomplete="email" required>
           <p class="tela__error" aria-live="polite"></p>
@@ -114,7 +114,7 @@
 
       <section class="tela" data-tela="4">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 4 de 11</p>
+          <p class="tela__count">Pergunta 4 de 13</p>
           <fieldset class="tela__fieldset">
             <legend class="tela__question">Você é médico?</legend>
             <div class="opcoes">
@@ -132,9 +132,9 @@
 
       <section class="tela" data-tela="5">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 5 de 11</p>
-          <label class="tela__question" for="especialidade">Qual é a sua especialidade e o seu CRM?</label>
-          <p class="tela__support">Exemplo: Cardiologia, CRM 00000/SP</p>
+          <p class="tela__count">Pergunta 5 de 13</p>
+          <label class="tela__question" for="especialidade">Qual é a sua especialidade?</label>
+          <p class="tela__support">Exemplo: Cardiologia</p>
           <input class="tela__input" type="text" id="especialidade" name="especialidade" required>
           <p class="tela__error" aria-live="polite"></p>
           <div class="tela__nav">
@@ -146,7 +146,21 @@
 
       <section class="tela" data-tela="6">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 6 de 11</p>
+          <p class="tela__count">Pergunta 6 de 13</p>
+          <label class="tela__question" for="instagram">Qual é o seu @ no Instagram?</label>
+          <p class="tela__support">Se ainda não tiver perfil profissional, pode deixar em branco.</p>
+          <input class="tela__input" type="text" id="instagram" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@seuperfil">
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="7">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 7 de 13</p>
           <fieldset class="tela__fieldset">
             <legend class="tela__question">Em que momento o seu negócio educacional está?</legend>
             <div class="opcoes">
@@ -163,9 +177,9 @@
         </div>
       </section>
 
-      <section class="tela" data-tela="7">
+      <section class="tela" data-tela="8">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 7 de 11</p>
+          <p class="tela__count">Pergunta 8 de 13</p>
           <label class="tela__question" for="ensina">O que você ensina, ou pretende ensinar?</label>
           <p class="tela__support">Uma frase é suficiente.</p>
           <input class="tela__input" type="text" id="ensina" name="ensina" required>
@@ -177,9 +191,9 @@
         </div>
       </section>
 
-      <section class="tela" data-tela="8">
+      <section class="tela" data-tela="9">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 8 de 11</p>
+          <p class="tela__count">Pergunta 9 de 13</p>
           <fieldset class="tela__fieldset">
             <legend class="tela__question">Quanto o seu negócio educacional fatura por mês hoje?</legend>
             <div class="opcoes">
@@ -198,9 +212,23 @@
         </div>
       </section>
 
-      <section class="tela" data-tela="9">
+      <section class="tela" data-tela="10">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 9 de 11</p>
+          <p class="tela__count">Pergunta 10 de 13</p>
+          <label class="tela__question" for="desafio">Qual é o maior desafio do seu negócio hoje?</label>
+          <p class="tela__support">Opcional. Uma frase já ajuda o mentor a chegar preparado na conversa.</p>
+          <input class="tela__input" type="text" id="desafio" name="desafio" autocomplete="off">
+          <p class="tela__error" aria-live="polite"></p>
+          <div class="tela__nav">
+            <button type="button" class="btn btn--dark" data-next>Continuar</button>
+            <button type="button" class="tela__back" data-back>Voltar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tela" data-tela="11">
+        <div class="tela__inner">
+          <p class="tela__count">Pergunta 11 de 13</p>
           <fieldset class="tela__fieldset">
             <legend class="tela__question">O Fellowship é um investimento de cinco dígitos por doze meses de acompanhamento individual. Você está em condição de decidir sobre isso nas próximas semanas?</legend>
             <div class="opcoes">
@@ -216,9 +244,9 @@
         </div>
       </section>
 
-      <section class="tela" data-tela="10">
+      <section class="tela" data-tela="12">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 10 de 11</p>
+          <p class="tela__count">Pergunta 12 de 13</p>
           <fieldset class="tela__fieldset">
             <legend class="tela__question">Como você chegou até aqui?</legend>
             <div class="opcoes">
@@ -239,9 +267,9 @@
         </div>
       </section>
 
-      <section class="tela" data-tela="11">
+      <section class="tela" data-tela="13">
         <div class="tela__inner">
-          <p class="tela__count">Pergunta 11 de 11</p>
+          <p class="tela__count">Pergunta 13 de 13</p>
           <fieldset class="tela__fieldset">
             <legend class="tela__question">Você consegue reservar uma session a cada quinze dias por doze meses e executar a conduta entre elas?</legend>
             <div class="opcoes">

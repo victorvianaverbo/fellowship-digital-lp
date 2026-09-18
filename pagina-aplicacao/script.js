@@ -358,7 +358,38 @@ function initFaqIndex() {
 /* Pagina /aplicar/: uma pergunta por tela, com triagem */
 /* Envio para o Google Sheets (Apps Script Web App).
    A URL fica em data-endpoint no <form>. O Apps Script recebe JSON em e.postData.contents.
-   Sem Content-Type explícito o navegador manda text/plain, que o Apps Script aceita sem preflight. */
+   Sem Content-Type explícito o navegador manda text/plain, que o Apps Script aceita sem preflight.
+   Cada visita tem um id: o script grava uma linha parcial depois do e-mail e atualiza a mesma
+   linha a cada avanço, até o status final (completa, não médico, sem condição agora). */
+const aplicacaoId = (window.crypto && crypto.randomUUID)
+  ? crypto.randomUUID()
+  : Date.now().toString(36) + Math.random().toString(36).slice(2);
+
+function dadosDaAplicacao(form, status) {
+  const dados = { id: aplicacaoId, status };
+  new FormData(form).forEach((v, k) => { if (k !== 'bot-field') dados[k] = String(v).trim(); });
+  const phone = form.querySelector('input[type="tel"]');
+  if (phone && phone._iti && phone.value) dados.telefone = phone._iti.getNumber() || dados.telefone;
+  if (dados.instagram) dados.instagram = '@' + dados.instagram.replace(/^.*instagram\.com\//i, '').replace(/^@+/, '').replace(/[/?].*$/, '');
+  const params = new URLSearchParams(window.location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'].forEach((k) => {
+    dados[k] = params.get(k) || '';
+  });
+  dados.pagina = window.location.pathname;
+  dados.enviado_em = new Date().toISOString();
+  return dados;
+}
+
+// Envio parcial: silencioso, não bloqueia a navegação e sobrevive ao fechamento da aba
+function salvarParcial(form, status) {
+  const endpoint = (form.dataset.endpoint || '').trim();
+  const bot = form.querySelector('input[name="bot-field"]');
+  if (!endpoint || (bot && bot.value)) return;
+  try {
+    fetch(endpoint, { method: 'POST', body: JSON.stringify(dadosDaAplicacao(form, status)), keepalive: true }).catch(() => {});
+  } catch { /* sem rede: o envio final tenta de novo */ }
+}
+
 async function enviarParaSheets(form) {
   const endpoint = (form.dataset.endpoint || '').trim();
   if (!endpoint) throw new Error('Endpoint do Google Sheets não configurado');
@@ -366,16 +397,7 @@ async function enviarParaSheets(form) {
   const bot = form.querySelector('input[name="bot-field"]');
   if (bot && bot.value) return; // honeypot preenchido: finge sucesso e não grava
 
-  const dados = {};
-  new FormData(form).forEach((v, k) => { if (k !== 'bot-field') dados[k] = v; });
-  const params = new URLSearchParams(window.location.search);
-  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'].forEach((k) => {
-    dados[k] = params.get(k) || '';
-  });
-  dados.pagina = window.location.pathname;
-  dados.enviado_em = new Date().toISOString();
-
-  const res = await fetch(endpoint, { method: 'POST', body: JSON.stringify(dados) });
+  const res = await fetch(endpoint, { method: 'POST', body: JSON.stringify(dadosDaAplicacao(form, 'completa')) });
   if (!res.ok) throw new Error('Falha ao gravar na planilha');
   const json = await res.json().catch(() => ({}));
   if (json && json.ok === false) throw new Error(json.error || 'Falha ao gravar na planilha');
@@ -388,7 +410,8 @@ function initAplicacao() {
   const telas = Array.from(form.querySelectorAll('.tela'));
   const progress = document.querySelector('[data-progress]');
   const triagem = form.querySelector('input[name="triagem"]');
-  const total = 11;
+  const total = telas.filter((t) => !isNaN(parseInt(t.getAttribute('data-tela'), 10))).length;
+  const telaEmail = parseInt((form.querySelector('[name="email"]') || form).closest('.tela')?.getAttribute('data-tela'), 10) || 3;
   let current = 0;
   let history = [];
   let animating = false;
@@ -435,6 +458,7 @@ function initAplicacao() {
     if (text) {
       text.classList.remove('error');
       const value = text.value.trim();
+      if (!value && !text.required) return true; // campo opcional
       let ok = value.length > 0;
       if (ok && text.type === 'email') ok = isValidEmail(value);
       if (ok && text.type === 'tel' && text._iti) ok = text._iti.isValidNumber();
@@ -464,10 +488,14 @@ function initAplicacao() {
     const goto = checked && checked.getAttribute('data-goto');
     history.push(current);
     if (goto) {
-      if (triagem) triagem.value = goto === 'encerramento-a' ? 'Não é médico' : 'Ainda não está em condição de investir';
+      const naoMedico = goto === 'encerramento-a';
+      if (triagem) triagem.value = naoMedico ? 'Não é médico' : 'Ainda não está em condição de investir';
+      salvarParcial(form, naoMedico ? 'não médico' : 'sem condição agora');
       goTo(byName(goto));
       return;
     }
+    const n = parseInt(tela.getAttribute('data-tela'), 10);
+    if (n >= telaEmail) salvarParcial(form, 'parcial');
     goTo(current + 1);
   };
 

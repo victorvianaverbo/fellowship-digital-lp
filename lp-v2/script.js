@@ -335,6 +335,15 @@
         alvo.x = 0; alvo.y = 0;
         if (!rodando) { rodando = true; window.requestAnimationFrame(anima); }
       });
+    } else if (!reduzido()) {
+      /* Toque: a cruz desce devagar e gira de leve com o scroll, os eixos no sentido oposto */
+      var eixosToque = $$('.cruz__eixo', cruz);
+      aoRolar(function () {
+        if (!heroVisivel) return;
+        var y = Math.min(window.scrollY, hero.offsetHeight);
+        cruz.style.transform = 'translate3d(0,' + (y * 0.18).toFixed(1) + 'px,0) rotate(' + (y * 0.03).toFixed(2) + 'deg)';
+        eixosToque.forEach(function (e) { e.style.translate = '0 ' + (-y * 0.06).toFixed(1) + 'px'; });
+      });
     }
   }
 
@@ -525,6 +534,25 @@
     });
 
     if (mqPin.matches) defineEtapa(1);
+
+    /* Fora do modo fixado (toque, tablet): a etapa no meio da tela ganha foco */
+    if (!reduzido()) {
+      aoRolar(function () {
+        if (mqPin.matches) return;
+        var rs = secaoCiclo.getBoundingClientRect();
+        if (rs.bottom < 0 || rs.top > window.innerHeight) return;
+        secaoCiclo.classList.add('tem-foco');
+        var meio = window.innerHeight / 2;
+        var perto = null;
+        var menor = Infinity;
+        etapas.forEach(function (et) {
+          var r = et.getBoundingClientRect();
+          var d = Math.abs(r.top + r.height / 2 - meio);
+          if (d < menor) { menor = d; perto = et; }
+        });
+        etapas.forEach(function (et) { et.classList.toggle('is-foco', et === perto); });
+      });
+    }
 
     /* Clique e teclado nos nos */
     function irPara(n) {
@@ -915,6 +943,9 @@
     var alvoHover = null;
 
     function mede() {
+      /* So fixa se o texto couber na tela; senao a secao rola normal */
+      pin.classList.remove('final--solto');
+      if (acao && copy.offsetTop + acao.offsetTop + acao.offsetHeight + 16 > stage.clientHeight) pin.classList.add('final--solto');
       var W = stage.clientWidth;
       var H = stage.clientHeight;
       var mobile = mqMobile.matches;
@@ -922,7 +953,7 @@
       var S0 = s * 1.8;
       var u = s / 12;
       var cx = W / 2;
-      var cy = H * (mobile ? 0.14 : 0.17);
+      var cy = Math.min(H, window.innerHeight) * (mobile ? 0.13 : 0.17);
       geo = {
         s: s,
         final: [
@@ -1020,29 +1051,14 @@
       return;
     }
 
-    /* Desktop: progresso do pin. Mobile e tablet: animacao unica */
-    var animouUnica = false;
-
+    /* Progresso do pin em qualquer tela (no toque, acompanha o dedo) */
     aoRolar(function () {
-      if (!mqPin.matches) return;
       var r = pin.getBoundingClientRect();
       var util = pin.offsetHeight - stage.offsetHeight;
-      if (util <= 0) return;
-      desenha(limita(-r.top / util, 0, 1));
+      if (util > 0) { desenha(limita(-r.top / util, 0, 1)); return; }
+      /* Tela baixa, sem pin: o progresso acompanha a entrada da secao */
+      desenha(limita((window.innerHeight - r.top) / (window.innerHeight * 0.9), 0, 1));
     });
-
-    aoEntrar([pin], function () {
-      if (mqPin.matches || animouUnica) return;
-      animouUnica = true;
-      var inicio = null;
-      function passo(t) {
-        if (inicio === null) inicio = t;
-        var k = limita((t - inicio) / 1600, 0, 1);
-        desenha(k);
-        if (k < 1) window.requestAnimationFrame(passo);
-      }
-      window.requestAnimationFrame(passo);
-    }, '0px 0px -30% 0px');
   }
 
   /* ==========================================

@@ -3763,7 +3763,8 @@ html:not(.js) .final__simbolo-estatico {
   transform: translateY(var(--acao-y, 12px));
 }
 
-@media (min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+/* Fixado em qualquer tela: no toque os quadrantes acompanham o dedo */
+@media (prefers-reduced-motion: no-preference) {
   .js .final__pin {
     height: 200vh;
   }
@@ -3772,6 +3773,15 @@ html:not(.js) .final__simbolo-estatico {
     position: sticky;
     top: 0;
     height: 100svh;
+  }
+
+  .js .final__pin.final--solto {
+    height: auto;
+  }
+
+  .js .final--solto .final__stage {
+    position: relative;
+    height: auto;
   }
 }
 
@@ -4024,6 +4034,24 @@ html:not(.js) .final__simbolo-estatico {
 
   .etapa__texto {
     grid-column: 2;
+  }
+
+  /* Foco que segue o scroll: a etapa no meio da tela acende, as outras recuam */
+  .js .ciclo.tem-foco:not(.ciclo--fixo) .etapa {
+    opacity: 0.32;
+    transition: opacity 0.5s var(--ease);
+  }
+
+  .js .ciclo.tem-foco:not(.ciclo--fixo) .etapa.is-foco {
+    opacity: 1;
+  }
+
+  .js .ciclo.tem-foco:not(.ciclo--fixo) .etapa__mini {
+    transition: transform 0.6s var(--ease);
+  }
+
+  .js .ciclo.tem-foco:not(.ciclo--fixo) .etapa.is-foco .etapa__mini {
+    transform: scale(1.15);
   }
 
   .ciclo__fecho p {
@@ -4725,7 +4753,8 @@ html:not(.js) .final__simbolo-estatico {
   }
 
   .final__copy {
-    padding-top: 30vh;
+    padding-top: 26vh;
+    padding-bottom: calc(var(--horizonte-h) + 1rem);
     text-align: left;
     align-items: stretch;
   }
@@ -4795,7 +4824,7 @@ html:not(.js) .final__simbolo-estatico {
 .prova      { --cis: 1160px; }
 .aplicacao  { --cis: 1350px; }
 .perguntas  { --cis: 1610px; }
-.final      { --cis: 900px; }
+.final      { --cis: 1750px; }
 .rodape     { --cis: 480px; }
 
 @media (min-width: 1025px) {
